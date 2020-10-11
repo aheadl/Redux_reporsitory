@@ -15,6 +15,7 @@ class App extends Component {
               </Navbar>
               <Directory />
           </div>
+          
       );
   }
 }
