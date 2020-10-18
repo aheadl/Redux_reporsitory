@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import React from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 //import DirectoryComponent from './DirectoryComponent';
 
-class CampsiteInfo extends Component {
-    constructor(props){
-        super(props);
-    }
 
 
-renderCampsite(campsite) {
+function RenderCampsite({campsite})  {
 
     return(
         <div className="col-md-5 m-1">
@@ -23,7 +19,7 @@ renderCampsite(campsite) {
     )
 
 }
-renderComments(comments){
+function RenderComments({comments}) {
     if(comments) {
         return (
            <div  className="col-md-5 m-1">
@@ -44,29 +40,24 @@ renderComments(comments){
     }
     
 
-render(){
+
     //campsite state passed from DirectoryComponent and is converted to props in this classed
 
-    if(this.props.campsite) {
-        return (
-            <div className="row">
-                {this.renderCampsite(this.props.campsite)} 
-                {this.renderComments(this.props.campsite.comments)}
-            
-            </div>
-        )
+    function CampsiteInfo(props) {
+        if (props.campsite) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <RenderCampsite campsite={props.campsite} />
+                        <RenderComments comments={props.campsite.comments} />
+                    </div>
+                </div>
+            );
     }
-    else {
-        return (
-            <div>
-
-            </div>
-        )
-    }
-
+    return <div />;
 }
 
 
-}
+
 
 export default CampsiteInfo;
