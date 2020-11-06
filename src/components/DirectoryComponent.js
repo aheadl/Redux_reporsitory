@@ -2,12 +2,15 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+//???? Updating source of image from client to server
+// <CardImg width="100%" src={campsite.image} alt={campsite.name} />
 
 function RenderDirectoryItem({campsite}) {
     return (
         <Card>
              <Link to={`/directory/${campsite.id}`}>
-                <CardImg width="100%" src={campsite.image} alt={campsite.name} />
+                <CardImg width="100%" src={baseUrl + campsite.image} alt={campsite.name} />
                 <CardImgOverlay>
                     <CardTitle>{campsite.name}</CardTitle>
                 </CardImgOverlay>
@@ -51,15 +54,15 @@ function Directory(props) {
             <div className="row">
                 <div className="col">
                     <Breadcrumb>
-                    <BreadcrumbItem><Link to="/home"Home></Link></BreadcrumbItem>
-                    <BreadcrumbItem active>Directory</BreadcrumbItem>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Directory</BreadcrumbItem>
                     </Breadcrumb>
                     <h2>Directory</h2>
-                    <hr/>
+                    <hr />
                 </div>
             </div>
             <div className="row">
-                {directory}
+            {directory}
             </div>
         </div>
     );
